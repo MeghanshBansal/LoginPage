@@ -14,7 +14,7 @@ function LoginPage() {
                     className="text-headingLink text-4xl font-medium"
                     href={"#"}
                   >
-                    Cork
+                    CORK
                   </a>
                 </p>
                 <p className="text-darkblue font-bold mb-12 mt-0">
