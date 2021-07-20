@@ -51,8 +51,8 @@ function LoginPageFormik() {
                       <circle cx="12" cy="7" r="4"></circle>
                     </svg>
                     <input
-                      id="username"
-                      name="username"
+                      id="email"
+                      name="email"
                       placeholder="Username"
                       type="text"
                       className="inline-block align-middle min-w-50 max-w-635 w-full min-h-35 text-darkblue font-semibold pb-3 pl-9"
