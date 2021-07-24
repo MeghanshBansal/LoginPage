@@ -1,7 +1,10 @@
 import React from "react";
+import { useState } from "react";
+import { Switch } from "@headlessui/react";
 import { FormikConsumer, useFormik } from "formik";
 
 function LoginPageFormik() {
+  const [enabled, setEnabled] = useState(false);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -94,31 +97,31 @@ function LoginPageFormik() {
                   </div>
                   <div className="flex justify-between box-border text-left">
                     <div className="flex text-left">
-                      <p className="align-text-bottom">Show Password{"  "}</p>
-                      <label className="mb-0 align-middle ml-2 relative inline-block w-35 h-18">
-                        <input
-                          id="password-toggel"
-                          className="min-w-50 max-w-635 w-full min-h-35 overflow-visible hidden"
-                          type="checkbox"
-                          onChange={() => {
-                            let x = document.getElementById(
-                              "password"
-                            ) as HTMLInputElement;
-                            if (x !== null) {
-                              if (x.type === "password") {
-                                x.type = "text";
-                              } else {
-                                x.type = "password";
-                              }
+                      <p className="items-center font-semibold py-3">
+                        Show Password
+                      </p>
+                      <div className="p-3">
+                        <Switch
+                          checked={enabled}
+                          onChange={setEnabled}
+                          className={`${
+                            enabled ? "bg-blue-900" : "bg-green-700"
+                          }
+          relative inline-flex flex-shrink-0 h-[15px] w-[35px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+                        >
+                          <span
+                            aria-hidden="true"
+                            className={`${
+                              enabled ? "translate-x-5" : "translate-x-0"
                             }
-                          }}
-                        ></input>
-                        <span className="rounded-3xl absolute cursor-pointer before:bg-headingLink before:absolute before:h-3.5 before:w-3.5 before: left-1 before: bottom-1"></span>
-                      </label>
+            pointer-events-none inline-block h-[10px] w-[10px] rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
+                          />
+                        </Switch>
+                      </div>
                     </div>
-                    <div className="bg-headingLink p-2">
+                    <div className="p-2">
                       <button
-                        className="p-0 align-middle cursor-pointer bg-headingLink text-white shadow-lg py-1 px-1 inline-block text-center m-0 box-border overflow-visible"
+                        className="p-0 align-middle cursor-pointer bg-headingLink text-white shadow-lg py-1 px-2 inline-block text-center m-0 box-border overflow-visible rounded-2xl"
                         type="submit"
                       >
                         Log In
@@ -128,7 +131,7 @@ function LoginPageFormik() {
                   <div className="mt-16 text-center">
                     <label className="cursor-pointer relative inline-flex mr-6 mb-2 pl-8 font-thin">
                       <input type="checkbox" className="absolute opacity-0" />
-                      <span className="border-r-2 border-solid block h-18 w-18 rounded cursor-pointer text-center after:top-2/4 after:block after:left-2/4 after: absolute after:border-r-4"></span>
+                      <span className="border-r-2 border-solid block h-18 w-18 rounded cursor-pointer text-center after:top-2/4 after:block after:left-2/4 after: absolute after:border-r-4 text-sm"></span>
                       Keep me logged In
                     </label>
                   </div>
