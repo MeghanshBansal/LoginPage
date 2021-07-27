@@ -5,6 +5,7 @@ import { FormikConsumer, useFormik } from "formik";
 
 function LoginPageFormik() {
   const [enabled, setEnabled] = useState(false);
+  const [aspassword, setaspassword] = useState(true);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -88,7 +89,7 @@ function LoginPageFormik() {
                       id="password"
                       name="password"
                       placeholder="Password"
-                      type="password"
+                      type={`${aspassword === true ? "password" : "text"}`}
                       className="inline-block align-middle min-w-50 max-w-635 w-full min-h-35 text-darkblue font-semibold pb-3 pl-9"
                       height={"calc(1.4em + 1.4rem + 2px"}
                       onChange={formik.handleChange}
@@ -103,9 +104,12 @@ function LoginPageFormik() {
                       <div className="p-3">
                         <Switch
                           checked={enabled}
-                          onChange={setEnabled}
+                          onChange={() => {
+                            setEnabled(!enabled);
+                            setaspassword(!aspassword);
+                          }}
                           className={`${
-                            enabled ? "bg-blue-900" : "bg-green-700"
+                            enabled ? "bg-green-600" : "bg-gray-600"
                           }
           relative inline-flex flex-shrink-0 h-[15px] w-[35px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
                         >
@@ -161,8 +165,8 @@ function LoginPageFormik() {
         <div className="flex flex-col fixed justify-center items-center right-0 h-full w-2/4 min-h-auto box-border bg-imagebackground">
           <img
             src="https://cdn.pixabay.com/photo/2015/12/10/16/39/shield-1086703_960_720.png"
-            alt=""
-            className="absolute h-4/6 w-4/6 align-middle justify-around text-center m-autoblock"
+            alt="Image is loading..."
+            className="absolute h-4/6 w-4/6 align-middle justify-around text-center m-autoblock text-white"
           />
         </div>
       </div>
